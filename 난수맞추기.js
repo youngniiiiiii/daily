@@ -122,7 +122,6 @@ while (true) {
     break;
   }
 }
- */
 
 var n = 0; // 입력한 숫자
 var low = 0;
@@ -138,7 +137,6 @@ ${low}-${high} 사이 숫자를 입력해 주세요`);
 
   if (n == card) {
     alert(`정답입니다!!`);
-    break;
   } else if (n > card && n < high) {
     count++;
     alert(`정답은 더 작은 숫자입니다.`);
@@ -150,5 +148,48 @@ ${low}-${high} 사이 숫자를 입력해 주세요`);
   } else {
     count++;
     alert(`범위의 숫자가 아닙니다.`);
+  }
+  alert("시도횟수는 " + count + "입니다.");
+  var con = confirm("다시 게임을 하시겠습니까?");
+  //무한루프를 사용할 경우에는 반드시 빠져나갈 곳을 만들어 두어야 한다.
+  if (con == false) {
+    break;
+  }
+} */
+
+while (true) {
+  var n = 0; // 입력한 숫자
+  var low = 0;
+  var high = 99;
+  var card = Math.floor(Math.random() * 100); // 정답
+
+  alert("수를 결정하였습니다. 맞춰보세요");
+  var count = 1;
+
+  while (true) {
+    n = window.prompt(`${count}번째 시도입니다. 
+${low}-${high} 사이 숫자를 입력해 주세요`);
+
+    if (n == card) {
+      alert(`정답입니다!!`);
+      break;
+    } else if (n > card && n < high) {
+      count++;
+      alert(`정답은 더 작은 숫자입니다.`);
+      high = n;
+    } else if (n < card && n > low) {
+      count++;
+      low = n;
+      alert(`정답은 더 큰 숫자입니다.`);
+    } else {
+      count++;
+      alert(`범위의 숫자가 아닙니다.`);
+    }
+  }
+  alert("시도횟수는 " + count + "입니다.");
+  var con = confirm("다시 게임을 하시겠습니까?");
+  //무한루프를 사용할 경우에는 반드시 빠져나갈 곳을 만들어 두어야 한다.
+  if (con == false) {
+    break;
   }
 }
